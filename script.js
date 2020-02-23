@@ -2,13 +2,13 @@
 var generateBtn = document.querySelector("#generate");
 
 // defined arrays
-var upperCaseLtrs = [ABCDEFGHIJKLMNOPQRSTUVWXYZ];
+var upperCaseLtrs = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","Z","Y","Z"];
 var lowerCaseLtrs = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var specialChars = ["!","@","#","$","%","^","&","*","(",")"];
 var numerals = ["0","1","2","3","4","5","6","7","8"];
+var allArrayCriteria = [];
 
 //variables
-var allArrayCriteria = [];
 var randomPassword;
 var upperCaseInput;
 var lowerCaseInput;
@@ -18,11 +18,14 @@ var pwdLength;
 var password;
 
 
+
 //write password function
 function generatePassword() {
-    //var pwdLength = parseInt(prompt("Enter a number of characters for your password between 8 ///and 128"));
-    //if (pwdLength >= 8 && pwdLength <=128) 
-    //}
+    var pwdLength = parseInt(prompt("Enter a number of characters for your password between 8 nd 128"));
+    if (pwdLength >= 8 && pwdLength <=128) {
+        randomPassword = pwdLength
+        }
+    }
     //generate all criteria array and validate prompts from users
     var upperCaseInput = confirm("Include uppercase letters?");
     if (upperCaseInput === true) {
@@ -52,19 +55,18 @@ function generatePassword() {
         allArrayCriteria.push(numerals[i]); 
         }
     }
-}
+  
 console.log(allArrayCriteria)
-       /*//alert user if at least one criteria is not met
-    if (upperCaseInput === false && lowerCaseInput === false && specCharInput === false && numericInput === false) ;
-    alert("You must choose at least one criteria, please try again.")
+//alert user if at least one criteria is not met
+    //if (upperCaseInput === false && lowerCaseInput === false && specCharInput === false && numericInput === false) ;
+    //alert("You must choose at least one criteria, please try again.")
+    //}
+    var randomPassword = ""
+    for (i = 0; i < pwdLength; i++) {
+    randomPassword = allArrayCriteria[Math.floor(Math.random() * allArrayCriteria.length)];
+    var password = randomPassword.concat(allArrayCriteria)
     }
-    */
-    //conditionals 
-    //for (i = 0; i < pwdLength; i++) {
-    //var pwdLength = allArrayCriteria[Math.floor(Math.random() * AllCriteria.length)];
-    //var randomPassword = pwdLengthPassword.concat(allArrayCriteria)
-//}
-// Write password to the #password input box
+//write password to the #password input box
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");  
