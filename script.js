@@ -14,14 +14,14 @@ var upperCaseInput;
 var lowerCaseInput;
 var specCharInput;
 var numericInput;
-var pLength
-var password;
+var pLength;
+
 
 //write password function
 function generatePassword() {
     var pLength = prompt("Enter a number of characters for your password between 8 nd 128"); {
     (pLength >= 8 && pLength <=128) 
-    var pwdLength = parseInt(pwdLength)
+    var pLength = parseInt(pLength)
     }
     //generate all criteria array and validate prompts from users
     var upperCaseInput = confirm("Include uppercase letters?");
@@ -53,16 +53,20 @@ function generatePassword() {
         }
     }
 }    
-    var randomPassword = ""
-    for (i = 0; i < pLength; i++) {
-    randomPassword = allArrayCriteria[Math.floor(Math.random() * allArrayCriteria.length)];
+    for(var i = 0; i <= pLength; i++) {
+    randomPassword = randomPassword + allArrayCriteria.charAt(Math.floor(Math.random() * Math.floor(allArrayCriteria.length - 1)));
     var randomPassword = randomPassword.concat(randomPassword)
     }
+    console.log(allArrayCriteria)
+    document.getElementById("generate").value = password;
 //write password to the #password input box
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");  
     passwordText.value = password;  
+
+    console.log(randomPassword)
+    console.log(password)
 }   
 //activate the button 
-generateBtn.addEventListener("click", function writePassword);
+generateBtn.addEventListener("click", writePassword);
