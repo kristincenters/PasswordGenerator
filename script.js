@@ -21,9 +21,9 @@ var password;
 
 //write password function
 function generatePassword() {
-    var pwdLength = parseInt(prompt("Enter a number of characters for your password between 8 nd 128"));
+    var pwdLength = prompt("Enter a number of characters for your password between 8 nd 128"); 
     if (pwdLength >= 8 && pwdLength <=128) {
-        randomPassword = pwdLength
+        var pwdLengthNumber = parseInt(pwdLength)
         }
     }
     //generate all criteria array and validate prompts from users
@@ -64,13 +64,15 @@ console.log(allArrayCriteria)
     var randomPassword = ""
     for (i = 0; i < pwdLength; i++) {
     randomPassword = allArrayCriteria[Math.floor(Math.random() * allArrayCriteria.length)];
-    var password = randomPassword.concat(allArrayCriteria)
+    var randomPassword = randomPassword.concat(randomPassword)
     }
 //write password to the #password input box
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");  
-    passwordText.value = allArrayCriteria;  
+    passwordText.value = password;  
+
+return randomPassword;    
 }
 //activate the button 
 generateBtn.addEventListener("click", writePassword);
