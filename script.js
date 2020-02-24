@@ -14,17 +14,14 @@ var upperCaseInput;
 var lowerCaseInput;
 var specCharInput;
 var numericInput;
-var pwdLength;
+var pLength
 var password;
-
-
 
 //write password function
 function generatePassword() {
-    var pwdLength = prompt("Enter a number of characters for your password between 8 nd 128"); 
-    if (pwdLength >= 8 && pwdLength <=128) {
-        var pwdLengthNumber = parseInt(pwdLength)
-        }
+    var pLength = prompt("Enter a number of characters for your password between 8 nd 128"); {
+    (pLength >= 8 && pLength <=128) 
+    var pwdLength = parseInt(pwdLength)
     }
     //generate all criteria array and validate prompts from users
     var upperCaseInput = confirm("Include uppercase letters?");
@@ -55,14 +52,9 @@ function generatePassword() {
         allArrayCriteria.push(numerals[i]); 
         }
     }
-  
-console.log(allArrayCriteria)
-//alert user if at least one criteria is not met
-    //if (upperCaseInput === false && lowerCaseInput === false && specCharInput === false && numericInput === false) ;
-    //alert("You must choose at least one criteria, please try again.")
-    //}
+}    
     var randomPassword = ""
-    for (i = 0; i < pwdLength; i++) {
+    for (i = 0; i < pLength; i++) {
     randomPassword = allArrayCriteria[Math.floor(Math.random() * allArrayCriteria.length)];
     var randomPassword = randomPassword.concat(randomPassword)
     }
@@ -71,8 +63,6 @@ function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");  
     passwordText.value = password;  
-
-return randomPassword;    
-}
+}   
 //activate the button 
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", function writePassword);
