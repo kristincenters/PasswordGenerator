@@ -1,72 +1,81 @@
-//activate and locate on-page button
+//activate button
 var generateBtn = document.querySelector("#generate");
 
-// defined arrays
-var upperCaseLtrs = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","Z","Y","Z"];
-var lowerCaseLtrs = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var specialChars = ["!","@","#","$","%","^","&","*","(",")"];
-var numerals = ["0","1","2","3","4","5","6","7","8"];
-var allArrayCriteria = [];
+// variables
+var upperCaseLtrs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCaseLtrs = "abcdefghijklmnopqrstuvwxyz";
+var specialChars = "!()@[]_`{|}~%*@";
+var numerals = "0123456789";
 
-//variables
-var randomPassword;
-var upperCaseInput;
-var lowerCaseInput;
-var specCharInput;
-var numericInput;
-var pLength;
+//password variables
+var pLength = parseInt(pLength)
+var allCriteriaArray = [];
+var randomPassword = document.getElementById(randomPassword);
+var password = "";
 
-
-//write password function
+//on click button starts user questions and performs if statements to build the array of all characters, I want to use ParseInt to pass the user input value for password length
 function generatePassword() {
-    var pLength = prompt("Enter a number of characters for your password between 8 nd 128"); {
-    (pLength >= 8 && pLength <=128) 
-    var pLength = parseInt(pLength)
-    }
-    //generate all criteria array and validate prompts from users
-    var upperCaseInput = confirm("Include uppercase letters?");
+    //user input variables
+var pLength = prompt("Enter a number of characters for your password between 8 nd 128"); 
+(pLength >= 8 && pLength <=128)
+console.log(pLength)
+var upperCaseInput = confirm("Include uppercase letters?");
+var lowerCaseInput = confirm("Include lowercase letters?");
+var specCharInput = confirm("Include special characters?");
+var numericInput = confirm("Include numbers?");
+}
+//input validated by true method
     if (upperCaseInput === true) {
         upperCaseInput = upperCaseLtrs
         for (i = 0; i < upperCaseInput.length; i++) {
-        allArrayCriteria.push(upperCaseInput[i]); 
+        allCriteriaArray.push(upperCaseInput[i]); 
         }
     }
-    var lowerCaseInput = confirm("Include lowercase letters?");
     if (lowerCaseInput === true) {
         lowerCaseInput = lowerCaseLtrs
         for (i = 0; i < upperCaseInput.length; i++) {
-        allArrayCriteria.push(lowerCaseInput[i]); 
+        allCriteriaArray.push(lowerCaseInput[i]); 
         }
     }
-    var specCharInput = confirm("Include special characters?");
     if (specCharInput === true) {
         specCharInput = specialChars
         for (i = 0; i < specCharInput.length; i++) {
-        allArrayCriteria.push(specCharInput[i]); 
+        allCriteriaArray.push(specCharInput[i]); 
         }
     }
-    var numericInput = confirm("Include numbers?");
     if (numericInput === true) {
         numericInput = numerals
         for (i = 0; i < numerals.length; i++) {
-        allArrayCriteria.push(numerals[i]); 
+        allCriteriaArray.push(numerals[i]); 
         }
     }
-}    
-    for(var i = 0; i <= pLength; i++) {
-    randomPassword = randomPassword + allArrayCriteria.charAt(Math.floor(Math.random() * Math.floor(allArrayCriteria.length - 1)));
-    var randomPassword = randomPassword.concat(randomPassword)
+console.log(allCriteriaArray)    
+ //alert user if at least one criteria is not met
+    if (upperCaseInput === false && lowerCaseInput === false && specCharInput === false && NumericInput === false) {
+        alert("You must choose at least one criteria, please try again.")
     }
-    console.log(allArrayCriteria)
-    document.getElementById("generate").value = password;
-//write password to the #password input box
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");  
-    passwordText.value = password;  
 
-    console.log(randomPassword)
-    console.log(password)
-}   
-//activate the button 
+//Choose random letters from the array containing all of the variables, the for loop was suggested by classmates but I don't know why. It doesn't make sense to me. 
+function randomizer() {
+    for (i = 0; i <= pLength.length; i++) {
+        randomPassword += allCriteriaArray.charAt(Math.floor(Math.random() * allCriteriaArray.length));
+        var password = randomPassword.concat(randomPassword)
+        document.getElementById(randomPassword).value = randomPassword;
+        console.log(randomPassword)
+        document.write(randomPassword)
+    }
+}
+//using while to randomize makes more sense to me but doesn't work either
+while (password.length < pLength) {
+  var randomPassword = randomPassword[Math.floor(Math.random() * allCriteriaArray.length)];
+
+//write the random password to the html page
+function writePassword() {
+    var password = generatePassword()
+    var passwordText = document.querySelector("#password");
+    passwordText.value = randomPassword;
+    return randomPassword;
+}
+//write the password to the page
 generateBtn.addEventListener("click", writePassword);
+
